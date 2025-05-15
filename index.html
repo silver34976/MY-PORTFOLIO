@@ -1,68 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Shaikh Portfolio Gallery</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #f9f9f9;
-    margin: 20px;
-    text-align: center;
-  }
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 15px;
-    max-width: 1000px;
-    margin: auto;
-  }
-  .gallery img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shaikh Portfolio Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 30px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-gap: 15px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
 
-<h1>My Portfolio Gallery</h1>
-<div class="gallery" id="gallery"></div>
+  <h1>My Portfolio Gallery</h1>
+  <div class="gallery" id="gallery"></div>
 
 <script>
-  // आपकी Google Drive direct image URLs
-  const photos = [
-    "https://drive.google.com/uc?export=view&id=1FUABaK_WCykpZALvzIxRMCqJm3exd3Wm",
-    "https://drive.google.com/uc?export=view&id=1uQe3_VTxUQAOTcZnlN9LFtou0uvf5GPl",
-    "https://drive.google.com/uc?export=view&id=1pRSALpsf0z3kktkdwzknxGukJIeNxonU",
-    "https://drive.google.com/uc?export=view&id=1PqyWs8cV2jLeBIt_Hw6wWQRfqk5aSvg9",
-    "https://drive.google.com/uc?export=view&id=1VlWnuK70SNYSAhTbyfbkRDkESXse49U1",
-    "https://drive.google.com/uc?export=view&id=1eDu1TsfMTgbaa-i3rD7TVMtQjEoVrMfQ",
-    "https://drive.google.com/uc?export=view&id=1eDu1TsfMTgbaa-i3rD7TVMtQjEoVrMfQ",
-    "https://drive.google.com/uc?export=view&id=1JO7-A3Gf1zKkHnSL3p4o388c8GnqXEj9"
-  ];
-
-  const totalPhotos = photos.length;
-  const photosPerPage = 5;  // क्योंकि आपके पास 8 फोटो हैं, 5 एक बार में दिखा रहे हैं
-  let currentIndex = 0;
-  const gallery = document.getElementById('gallery');
-
-  function showPhotos() {
-    gallery.innerHTML = '';
-    for(let i = 0; i < photosPerPage; i++) {
-      const index = (currentIndex + i) % totalPhotos;
-      const img = document.createElement('img');
-      img.src = photos[index];
-      img.alt = `Photo ${index + 1}`;
-      gallery.appendChild(img);
-    }
-    currentIndex = (currentIndex + photosPerPage) % totalPhotos;
-  }
-
-  showPhotos(); // First load
-  setInterval(showPhotos, 10000); // हर 10 सेकंड बाद फोटो चेंज होंगी
+  const photos = [...]; // pura script hata dijiye
 </script>
+<div class="gallery">
+  <img src="../BACKUP/AD_hp_laptop.JPG" alt="Laptop Image" />
+>
+  <img src="../BACKUP/Nike_shoes_ad_1080X1350.JPG" alt="Nike_shoes_ad_1080X1350" />
+>
+  <img src="../BACKUP/STUDY_IN_CANADA_AD.JPG" alt="STUDY_IN_CANADA_AD" />
+>
+ 
+  <img src="../BACKUP/THE LEGACY OF RATA TATA_1.JPG" alt="THE LEGACY OF RATA TATA_1
+" />
+> </div>
+
+    const totalPhotos = photos.length;
+    const photosPerPage = 5;
+    let currentIndex = 0;
+    const gallery = document.getElementById('gallery');
+
+    function showPhotos() {
+      gallery.innerHTML = '';
+      for(let i = 0; i < photosPerPage; i++) {
+        const index = (currentIndex + i) % totalPhotos;
+        const img = document.createElement('img');
+        img.src = photos[index];
+        img.alt = `Photo ${index + 1}`;
+        gallery.appendChild(img);
+      }
+      currentIndex = (currentIndex + photosPerPage) % totalPhotos;
+    }
+
+    showPhotos();
+    setInterval(showPhotos, 10000); // 10 seconds
+  </script>
 
 </body>
 </html>
