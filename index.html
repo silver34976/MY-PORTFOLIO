@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio Gallery</title>
-  <style>
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 10px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .gallery img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shaikh Portfolio Gallery</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    margin: 20px;
+    text-align: center;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    max-width: 1000px;
+    margin: auto;
+  }
+  .gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+</style>
 </head>
 <body>
 
 <h1>My Portfolio Gallery</h1>
-<div class="gallery">
-  <img src="images/AD_hp_laptop.jpg" alt="Laptop Image" />
-  <!-- Yahan baki images bhi isi format me add kar sakte hain -->
-</div>
-
-</body>
-</html>
+<div class="gallery" id="gallery">
+  <img src="images/AIMAGAZINE.jpg" alt="Magazine" />
+  <img src="images/APPLE_WATCH_SOCIALMIDEA-AD-1080X1080.jpg" alt="Apple Watch Ad" />
+  <img src="images/Album-7.jpg" alt="Album 7" />
+  <img src="images/a-photograph-in-a-food-magazine-style-sh_eVCn1XA8ToGbD5UxOmaxyQ_Smm4aTSsR32NvlJy5Xad4g.jpg" alt="
