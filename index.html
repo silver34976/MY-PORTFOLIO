@@ -1,10 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shaikh Portfolio Gallery</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    margin: 20px;
+    text-align: center;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 15px;
+    max-width: 1000px;
+    margin: auto;
+  }
+  .gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+</style>
+</head>
+<body>
+
+<h1>My Portfolio Gallery</h1>
+<div class="gallery" id="gallery"></div>
+
 <script>
   const photos = [
     "images/AIMAGAZINE.jpg",
     "images/APPLE_WATCH_SOCIALMIDEA-AD-1080X1080.jpg",
-    "images/Album-7.jpg",  // Check case here
+    "images/Album-7.jpg",
     "images/a-photograph-in-a-food-magazine-style-sh_eVCn1XA8ToGbD5UxOmaxyQ_Smm4aTSsR32NvlJy5Xad4g.jpg",
-    "images/AD_hp_laptop.jpg"
+    "images/AD_hp_laptop.jpg",
+    "images/iphone xr firecracker work_final.jpg",
+    "images/iphone_ad_practice_lut_image.jpg",
+    "images/iphone13_ad.jpg",
+    "images/Lay's ad gif.gif",
+    "images/Lay's ad gif_2.gif",
+    "images/magazine business.jpg",
+    "images/news paper ad _phone pay gujarati.jpg",
+    "images/NEWS PAPER AD-1.jpg",
+    "images/NEWSPAPER-AD.jpg",
+    "images/PHONEPAY NEWS PAPER AD.jpg",
+    "images/WEDDING_ALBUM_4.jpg",
+    "images/wedding_album_6.jpg",
+    "images/WEDDING_ALBUME_FINAL.jpg",
+    "images/WOK & ROLL.jpg"
   ];
 
   const photosPerPage = 5;
@@ -24,5 +70,8 @@
   }
 
   showPhotos();
-  setInterval(showPhotos, 10000);
+  setInterval(showPhotos, 10000); // 10 seconds mein images change hongi
 </script>
+
+</body>
+</html>
