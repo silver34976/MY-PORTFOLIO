@@ -1,72 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Shaikh Portfolio Gallery</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #f9f9f9;
-    margin: 20px;
-    text-align: center;
-  }
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 15px;
-    max-width: 1000px;
-    margin: auto;
-  }
-  .gallery img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    object-fit: cover;
-  }
-</style>
-</head>
-<body>
-
-<h1>My Portfolio Gallery</h1>
-<div class="gallery" id="gallery"></div>
-
 <script>
   const photos = [
     "images/AIMAGAZINE.jpg",
     "images/APPLE_WATCH_SOCIALMIDEA-AD-1080X1080.jpg",
-    "images/Album-7.jpg",
+    "images/Album-7.jpg",  // Check case here
     "images/a-photograph-in-a-food-magazine-style-sh_eVCn1XA8ToGbD5UxOmaxyQ_Smm4aTSsR32NvlJy5Xad4g.jpg",
-    // baki images bhi yaha add karo
-    "images/AD_hp_laptop.jpg",
-    "images/another-image.jpg",
-    "images/image8.jpg",
-    "images/image9.jpg",
-    "images/image10.jpg",
-    "images/image11.jpg",
-    "images/image12.jpg",
-    "images/image13.jpg",
-    "images/image14.jpg",
-    "images/image15.jpg",
-    "images/image16.jpg",
-    "images/image17.jpg",
-    "images/image18.jpg",
-    "images/image19.jpg",
-    "images/image20.jpg",
-    "images/image21.jpg",
-    "images/image22.jpg",
-    "images/image23.jpg",
-    "images/image24.jpg",
-    "images/image25.jpg"
+    "images/AD_hp_laptop.jpg"
   ];
 
-  const photosPerPage = 10;
+  const photosPerPage = 5;
   let currentIndex = 0;
   const gallery = document.getElementById('gallery');
 
   function showPhotos() {
     gallery.innerHTML = '';
-    for (let i = 0; i < photosPerPage; i++) {
+    for(let i = 0; i < photosPerPage; i++) {
       const index = (currentIndex + i) % photos.length;
       const img = document.createElement('img');
       img.src = photos[index];
@@ -76,9 +23,6 @@
     currentIndex = (currentIndex + photosPerPage) % photos.length;
   }
 
-  showPhotos(); // first load
-  setInterval(showPhotos, 10000); // har 10 second me change
+  showPhotos();
+  setInterval(showPhotos, 10000);
 </script>
-
-</body>
-</html>
