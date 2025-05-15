@@ -1,93 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shaikh | Graphic Designer</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-    }
-    header {
-      background-color: #fff;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-    header p {
-      margin: 5px 0;
-      font-size: 1.2em;
-      color: #666;
-    }
-    section {
-      padding: 30px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-    .about, .projects, .contact {
-      margin-bottom: 40px;
-    }
-    .projects img {
-      width: 100%;
-      max-width: 300px;
-      margin: 10px;
-      border-radius: 8px;
-    }
-    footer {
-      background-color: #eee;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-    }
-    .social a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #007bff;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shaikh Portfolio Gallery</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    margin: 20px;
+    text-align: center;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 15px;
+    max-width: 1000px;
+    margin: auto;
+  }
+  .gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+</style>
 </head>
 <body>
 
-<header>
-  <h1>Shaikh</h1>
-  <p>Graphic Designer</p>
-</header>
+<h1>My Portfolio Gallery</h1>
+<div class="gallery" id="gallery"></div>
 
-<section class="about">
-  <h2>About Me</h2>
-  <p>Creativity karna acha lagta hai. Highly professional graphic design karna acha lagta hai.</p>
-</section>
+<script>
+  // आपकी Google Drive direct image URLs
+  const photos = [
+    "https://drive.google.com/uc?export=view&id=1FUABaK_WCykpZALvzIxRMCqJm3exd3Wm",
+    "https://drive.google.com/uc?export=view&id=1uQe3_VTxUQAOTcZnlN9LFtou0uvf5GPl",
+    "https://drive.google.com/uc?export=view&id=1pRSALpsf0z3kktkdwzknxGukJIeNxonU",
+    "https://drive.google.com/uc?export=view&id=1PqyWs8cV2jLeBIt_Hw6wWQRfqk5aSvg9",
+    "https://drive.google.com/uc?export=view&id=1VlWnuK70SNYSAhTbyfbkRDkESXse49U1",
+    "https://drive.google.com/uc?export=view&id=1eDu1TsfMTgbaa-i3rD7TVMtQjEoVrMfQ",
+    "https://drive.google.com/uc?export=view&id=1eDu1TsfMTgbaa-i3rD7TVMtQjEoVrMfQ",
+    "https://drive.google.com/uc?export=view&id=1JO7-A3Gf1zKkHnSL3p4o388c8GnqXEj9"
+  ];
 
-<section class="projects">
-  <h2>My Work</h2>
-  <img src="https://via.placeholder.com/300x200?text=Project+1" alt="Project 1" />
-  <img src="https://via.placeholder.com/300x200?text=Project+2" alt="Project 2" />
-  <img src="https://via.placeholder.com/300x200?text=Project+3" alt="Project 3" />
-</section>
+  const totalPhotos = photos.length;
+  const photosPerPage = 5;  // क्योंकि आपके पास 8 फोटो हैं, 5 एक बार में दिखा रहे हैं
+  let currentIndex = 0;
+  const gallery = document.getElementById('gallery');
 
-<section class="contact">
-  <h2>Contact Me</h2>
-  <p>Email: <a href="mailto:s@gmail.com">s@gmail.com</a></p>
-  <p>Phone: <a href="tel:‪+919999988888‬">‪+91 99999 88888‬</a></p>
-</section>
+  function showPhotos() {
+    gallery.innerHTML = '';
+    for(let i = 0; i < photosPerPage; i++) {
+      const index = (currentIndex + i) % totalPhotos;
+      const img = document.createElement('img');
+      img.src = photos[index];
+      img.alt = `Photo ${index + 1}`;
+      gallery.appendChild(img);
+    }
+    currentIndex = (currentIndex + photosPerPage) % totalPhotos;
+  }
 
-<section class="social">
-  <h2>Follow Me</h2>
-  <a href="#">Instagram</a> | 
-  <a href="#">LinkedIn</a> | 
-  <a href="#">Behance</a>
-</section>
-
-<footer>
-  © 2025 Shaikh. All rights reserved.
-</footer>
+  showPhotos(); // First load
+  setInterval(showPhotos, 10000); // हर 10 सेकंड बाद फोटो चेंज होंगी
+</script>
 
 </body>
 </html>
