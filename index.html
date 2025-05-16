@@ -143,3 +143,19 @@
         const baseSize = 300;
         if(aspectRatio > 1){
           item.style.width = `${baseSize}px`;
+          item.style.height = `${baseSize / aspectRatio}px`;
+        } else {
+          item.style.width = `${baseSize * aspectRatio}px`;
+          item.style.height = `${baseSize}px`;
+        }
+      };
+      item.appendChild(img);
+      gallery.appendChild(item);
+    }
+    currentIndex = (currentIndex + photosPerPage) % photos.length;
+  }
+  showPhotos();
+  setInterval(showPhotos, 10000);
+</script>
+</body>
+</html>
