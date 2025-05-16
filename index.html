@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Shaikh Premium Portfolio</title>
+<title>Shaikh Portfolio Gallery</title>
 <style>
   body {
     margin: 0; padding: 0;
@@ -31,7 +31,6 @@
     font-size: 1.1rem;
     opacity: 0.8;
   }
-
   main {
     flex-grow: 1;
     max-width: 1200px;
@@ -67,7 +66,6 @@
     object-fit: contain;
     user-select: none;
   }
-
   footer {
     background: #111;
     text-align: center;
@@ -76,8 +74,6 @@
     font-size: 0.9rem;
     user-select: none;
   }
-
-  /* Responsive tweaks */
   @media(max-width: 900px) {
     .gallery-item {
       width: 45vw !important;
@@ -93,23 +89,19 @@
 </style>
 </head>
 <body>
-
 <header>
-  <h1>Shaikh Premium Portfolio</h1>
+  <h1>Shaikh Portfolio Gallery</h1>
   <p>10 images shown with smooth rotation every 10 seconds</p>
 </header>
-
 <main>
   <div class="gallery" id="gallery"></div>
 </main>
-
 <footer>
   &copy; 2025 Shaikh Portfolio. All rights reserved.
 </footer>
-
 <script>
   const photos = [
-    AIMAGAZINE.jpg,
+    "AIMAGAZINE.jpg",
     "APPLE_WATCH_SOCIALMIDEA-AD-1080X1080.jpg",
     "Album-7.jpg",
     "a-photograph-in-a-food-magazine-style-sh_eVCn1XA8ToGbD5UxOmaxyQ_Smm4aTSsR32NvlJy5Xad4g.jpg",
@@ -129,51 +121,25 @@
     "wedding_album_6.jpg",
     "WEDDING_ALBUME_FINAL.jpg",
     "WOK & ROLL.jpg"
-
   ];
-
   const photosPerPage = 10;
   let currentIndex = 0;
   const gallery = document.getElementById('gallery');
-
   function showPhotos() {
     gallery.innerHTML = '';
     for (let i = 0; i < photosPerPage; i++) {
       const index = (currentIndex + i) % photos.length;
       const imgSrc = photos[index];
-
       const item = document.createElement('div');
       item.className = 'gallery-item';
-
       const img = document.createElement('img');
       img.src = imgSrc;
       img.alt = `Photo ${index + 1}`;
       img.loading = 'lazy';
-
       img.onload = () => {
         const naturalWidth = img.naturalWidth;
         const naturalHeight = img.naturalHeight;
         const aspectRatio = naturalWidth / naturalHeight;
         const baseSize = 300;
-
         if(aspectRatio > 1){
           item.style.width = `${baseSize}px`;
-          item.style.height = `${baseSize / aspectRatio}px`;
-        } else {
-          item.style.width = `${baseSize * aspectRatio}px`;
-          item.style.height = `${baseSize}px`;
-        }
-      };
-
-      item.appendChild(img);
-      gallery.appendChild(item);
-    }
-    currentIndex = (currentIndex + photosPerPage) % photos.length;
-  }
-
-  showPhotos();
-  setInterval(showPhotos, 10000);
-</script>
-
-</body>
-</html>
