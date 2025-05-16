@@ -3,98 +3,88 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Shaikh Premium Gallery</title>
+<title>Shaikh Premium Portfolio</title>
 <style>
-  /* Basic reset */
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-  }
   body {
-    font-family: 'Inter', sans-serif;
-    background: #111;
+    margin: 0; padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
     color: #eee;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
   }
   header {
     background: linear-gradient(90deg, #ff6e7f, #bfe9ff);
-    padding: 2rem 1rem;
+    padding: 20px 0;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(255,110,127,0.4);
+    box-shadow: 0 3px 10px rgba(255,110,127,0.4);
   }
   header h1 {
-    font-size: 3rem;
-    font-weight: 800;
+    margin: 0;
+    font-size: 2.8rem;
     letter-spacing: 0.1em;
-    color: #fff;
-    margin-bottom: 0.3rem;
+    font-weight: 800;
   }
   header p {
-    font-weight: 400;
-    font-size: 1.2rem;
+    margin-top: 6px;
+    font-size: 1.1rem;
     opacity: 0.8;
   }
-  main.container {
-    max-width: 1400px;
-    margin: 2rem auto 4rem auto;
-    padding: 0 1rem;
+
+  main {
     flex-grow: 1;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 10px;
   }
   .gallery {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
     justify-content: center;
+    gap: 18px;
   }
   .gallery-item {
     background: #222;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow:
-      0 6px 15px rgba(255, 110, 127, 0.3),
-      inset 0 0 10px rgba(255, 110, 127, 0.2);
+    box-shadow: 0 6px 15px rgba(255, 110, 127, 0.3);
     cursor: pointer;
-    transition:
-      transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-      box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .gallery-item:hover {
-    transform: scale(1.07);
-    box-shadow:
-      0 14px 40px rgba(255, 110, 127, 0.7),
-      inset 0 0 30px rgba(255, 110, 127, 0.4);
+    transform: scale(1.06);
+    box-shadow: 0 14px 40px rgba(255, 110, 127, 0.7);
     z-index: 10;
   }
   .gallery-item img {
+    display: block;
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
     user-select: none;
   }
 
-  /* We'll set dynamic widths/heights in JS for aspect ratio */
-
   footer {
-    text-align: center;
-    padding: 1rem 1rem;
-    font-size: 0.9rem;
     background: #111;
-    color: #777;
+    text-align: center;
+    padding: 15px 10px;
+    color: #888;
+    font-size: 0.9rem;
     user-select: none;
   }
 
-  /* Responsive */
-  @media (max-width: 1024px) {
+  /* Responsive tweaks */
+  @media(max-width: 900px) {
     .gallery-item {
       width: 45vw !important;
       height: auto !important;
     }
   }
-  @media (max-width: 600px) {
+  @media(max-width: 500px) {
     .gallery-item {
       width: 90vw !important;
       height: auto !important;
@@ -105,11 +95,11 @@
 <body>
 
 <header>
-  <h1>Shaikh Premium Gallery</h1>
-  <p>Dynamic Gallery with Aspect Ratio & GIF Support</p>
+  <h1>Shaikh Premium Portfolio</h1>
+  <p>10 images shown with smooth rotation every 10 seconds</p>
 </header>
 
-<main class="container">
+<main>
   <div class="gallery" id="gallery"></div>
 </main>
 
@@ -119,20 +109,70 @@
 
 <script>
   const photos = [
-    "AIMAGAZINE.jpg",
-    "APPLE_WATCH_SOCIALMIDEA-AD-1080X1080.jpg",
-    "Album-7.jpg",
-    "a-photograph-in-a-food-magazine-style-sh_eVCn1XA8ToGbD5UxOmaxyQ_Smm4aTSsR32NvlJy5Xad4g.jpg",
-    "AD_hp_laptop.jpg",
-    "iphone xr firecracker work_final.jpg",
-    "iphone_ad_practice_lut_image.jpg",
-    "iphone13_ad.jpg",
-    "Lay's ad gif.gif",
-    "Lay's ad gif_2.gif",
-    "magazine business.jpg",
-    "news paper ad _phone pay gujarati.jpg",
-    "NEWS PAPER AD-1.jpg",
-    "NEWSPAPER-AD.jpg",
-    "PHONEPAYHINDI NEWS PAPER AD_IN_HINDI.jpg",
-    "PHONEPAY NEWS PAPER AD.jpg",
-    "WEDDING_ALBUM_
+    "images/AIMAGAZINE.jpg",
+    "images/APPLE_WATCH_SOCIALMIDEA-AD-1080X1080.jpg",
+    "images/Album-7.jpg",
+    "images/a-photograph-in-a-food-magazine-style-sh_eVCn1XA8ToGbD5UxOmaxyQ_Smm4aTSsR32NvlJy5Xad4g.jpg",
+    "images/AD_hp_laptop.jpg",
+    "images/iphone xr firecracker work_final.jpg",
+    "images/iphone_ad_practice_lut_image.jpg",
+    "images/iphone13_ad.jpg",
+    "images/Lay's ad gif.gif",
+    "images/Lay's ad gif_2.gif",
+    "images/magazine business.jpg",
+    "images/news paper ad _phone pay gujarati.jpg",
+    "images/NEWS PAPER AD-1.jpg",
+    "images/NEWSPAPER-AD.jpg",
+    "images/PHONEPAYHINDI NEWS PAPER AD_IN_HINDI.jpg",
+    "images/PHONEPAY NEWS PAPER AD.jpg",
+    "images/WEDDING_ALBUM_4.jpg",
+    "images/wedding_album_6.jpg",
+    "images/WEDDING_ALBUME_FINAL.jpg",
+    "images/WOK & ROLL.jpg"
+  ];
+
+  const photosPerPage = 10;
+  let currentIndex = 0;
+  const gallery = document.getElementById('gallery');
+
+  function showPhotos() {
+    gallery.innerHTML = '';
+    for (let i = 0; i < photosPerPage; i++) {
+      const index = (currentIndex + i) % photos.length;
+      const imgSrc = photos[index];
+
+      const item = document.createElement('div');
+      item.className = 'gallery-item';
+
+      const img = document.createElement('img');
+      img.src = imgSrc;
+      img.alt = `Photo ${index + 1}`;
+      img.loading = 'lazy';
+
+      img.onload = () => {
+        const naturalWidth = img.naturalWidth;
+        const naturalHeight = img.naturalHeight;
+        const aspectRatio = naturalWidth / naturalHeight;
+        const baseSize = 300;
+
+        if(aspectRatio > 1){
+          item.style.width = `${baseSize}px`;
+          item.style.height = `${baseSize / aspectRatio}px`;
+        } else {
+          item.style.width = `${baseSize * aspectRatio}px`;
+          item.style.height = `${baseSize}px`;
+        }
+      };
+
+      item.appendChild(img);
+      gallery.appendChild(item);
+    }
+    currentIndex = (currentIndex + photosPerPage) % photos.length;
+  }
+
+  showPhotos();
+  setInterval(showPhotos, 10000);
+</script>
+
+</body>
+</html>
