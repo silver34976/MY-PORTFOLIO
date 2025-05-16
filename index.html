@@ -1,79 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Shaikh Portfolio Gallery</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #f9f9f9;
-    margin: 20px;
-    text-align: center;
-  }
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 15px;
-    max-width: 1000px;
-    margin: auto;
-  }
-  .gallery img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shaikh Portfolio Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header, footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 15px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 768px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
 </head>
 <body>
 
-<h1>Shaikh Portfolio Gallery</h1>
-<div class="gallery" id="gallery"></div>
+  <header>
+    <h1>Shaikh Portfolio</h1>
+    <p>Creative Ads & Design Showcase</p>
+  </header>
 
-<script>
-  const photos = [
-    "AIMAGAZINE.jpg",
-    "APPLE_WATCH_SOCIALMIDEA-AD-1080X1080.jpg",
-    "Album-7.jpg",
-    "a-photograph-in-a-food-magazine-style-sh_eVCn1XA8ToGbD5UxOmaxyQ_Smm4aTSsR32NvlJy5Xad4g.jpg",
-    "AD_hp_laptop.jpg",
-    "iphone xr firecracker work_final.jpg",
-    "iphone_ad_practice_lut_image.jpg",
-    "iphone13_ad.jpg",
-    "Lay's ad gif.gif",
-    "Lay's ad gif_2.gif",
-    "magazine business.jpg",
-    "news paper ad _phone pay gujarati.jpg",
-    "NEWS PAPER AD-1.jpg",
-    "NEWSPAPER-AD.jpg",
-    "PHONEPAYHINDI NEWS PAPER AD_IN_HINDI.jpg",
-    "PHONEPAY NEWS PAPER AD.jpg",
-    "WEDDING_ALBUM_4.jpg",
-    "wedding_album_6.jpg",
-    "WEDDING_ALBUME_FINAL.jpg",
-    "WOK & ROLL.jpg"
+  <div class="container">
+    <div class="gallery" id="gallery"></div>
+  </div>
 
-  ];
+  <footer>
+    <p>&copy; 2025 Shaikh Portfolio. All rights reserved.</p>
+  </footer>
 
-  const photosPerPage = 5;
-  let currentIndex = 0;
-  const gallery = document.getElementById('gallery');
+  <script>
+    const photos = [
+      "AIMAGAZINE.jpg",
+      "APPLE_WATCH_SOCIALMIDEA-AD-1080X1080.jpg",
+      "Album-7.jpg",
+      "a-photograph-in-a-food-magazine-style-sh_eVCn1XA8ToGbD5UxOmaxyQ_Smm4aTSsR32NvlJy5Xad4g.jpg",
+      "AD_hp_laptop.jpg",
+      "iphone xr firecracker work_final.jpg",
+      "iphone_ad_practice_lut_image.jpg",
+      "iphone13_ad.jpg",
+      "Lay's ad gif.gif",
+      "Lay's ad gif_2.gif",
+      "magazine business.jpg",
+      "news paper ad _phone pay gujarati.jpg",
+      "NEWS PAPER AD-1.jpg",
+      "NEWSPAPER-AD.jpg",
+      "PHONEPAYHINDI NEWS PAPER AD_IN_HINDI.jpg",
+      "PHONEPAY NEWS PAPER AD.jpg",
+      "WEDDING_ALBUM_4.jpg",
+      "wedding_album_6.jpg",
+      "WEDDING_ALBUME_FINAL.jpg",
+      "WOK & ROLL.jpg",
+      "extra1.jpg",
+      "extra2.jpg",
+      "extra3.jpg",
+      "extra4.jpg",
+      "extra5.jpg"
+    ];
 
-  function showPhotos() {
-    gallery.innerHTML = '';
-    for(let i = 0; i < photosPerPage; i++) {
-      const index = (currentIndex + i) % photos.length;
-      const img = document.createElement('img');
-      img.src = photos[index];
-      img.alt = `Photo ${index + 1}`;
-      gallery.appendChild(img);
+    const photosPerPage = 10;
+    let currentIndex = 0;
+    const gallery = document.getElementById('gallery');
+
+    function showPhotos() {
+      gallery.innerHTML = '';
+      for(let i = 0; i < photosPerPage; i++) {
+        const index = (currentIndex + i) % photos.length;
+        const img = document.createElement('img');
+        img.src = photos[index];
+        img.alt = `Photo ${index + 1}`;
+        gallery.appendChild(img);
+      }
+      currentIndex = (currentIndex + photosPerPage) % photos.length;
     }
-    currentIndex = (currentIndex + photosPerPage) % photos.length;
-  }
 
-  showPhotos();
-  setInterval(showPhotos, 10000); // 10 seconds mein images change hongi
-</script>
+    showPhotos();
+    setInterval(showPhotos, 10000); // 10 seconds
+  </script>
 
 </body>
 </html>
