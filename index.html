@@ -3,59 +3,111 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shaikh Portfolio Gallery</title>
+  <title>Shaikh Premium Portfolio</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fafafa;
+      color: #222;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    a {
+      color: #0066ff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
 
-    header, footer {
-      background-color: #222;
-      color: #fff;
+    /* Header */
+    header {
+      background: linear-gradient(90deg, #007CF0, #00DFD8);
+      color: white;
+      padding: 30px 20px;
       text-align: center;
-      padding: 20px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    header p {
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      opacity: 0.9;
     }
 
-    .container {
-      padding: 30px;
-      max-width: 1600px; /* Increased container width */
-      margin: auto;
+    /* Main container */
+    main.container {
+      max-width: 1400px;
+      margin: 40px auto;
+      padding: 0 20px;
+      flex-grow: 1;
     }
 
+    /* Gallery grid */
     .gallery {
       display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 3 wide columns */
-      grid-gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-gap: 25px;
     }
-
     .gallery img {
-      width: 100%;             /* Full column width */
-      height: 600px;           /* Taller image */
-      object-fit: cover;       /* Center crop */
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
+      box-shadow: 0 12px 20px rgba(0,0,0,0.12);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      cursor: pointer;
+      background-color: #ddd;
+      user-select: none;
     }
-
     .gallery img:hover {
-      transform: scale(1.04);
+      transform: scale(1.05);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      z-index: 2;
+      position: relative;
     }
 
-    @media (max-width: 992px) {
-      .gallery {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    /* Footer */
+    footer {
+      background: #111;
+      color: #eee;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 0.9rem;
+      letter-spacing: 1.2px;
+      user-select: none;
     }
 
-    @media (max-width: 600px) {
-      .gallery {
-        grid-template-columns: 1fr;
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
       }
       .gallery img {
-        height: 400px;
+        height: 300px;
+      }
+    }
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      .gallery img {
+        height: 240px;
       }
     }
   </style>
@@ -63,13 +115,13 @@
 <body>
 
   <header>
-    <h1>Shaikh Portfolio</h1>
-    <p>Creative Ads & Design Showcase</p>
+    <h1>Shaikh Premium Portfolio</h1>
+    <p>Creative Advertisements & Photography Showcase</p>
   </header>
 
-  <div class="container">
+  <main class="container">
     <div class="gallery" id="gallery"></div>
-  </div>
+  </main>
 
   <footer>
     <p>&copy; 2025 Shaikh Portfolio. All rights reserved.</p>
@@ -111,4 +163,18 @@
     function showPhotos() {
       gallery.innerHTML = '';
       for (let i = 0; i < photosPerPage; i++) {
-        const index =
+        const index = (currentIndex + i) % photos.length;
+        const img = document.createElement('img');
+        img.src = photos[index];
+        img.alt = `Photo ${index + 1}`;
+        gallery.appendChild(img);
+      }
+      currentIndex = (currentIndex + photosPerPage) % photos.length;
+    }
+
+    showPhotos();
+    setInterval(showPhotos, 10000); // 10 seconds
+  </script>
+
+</body>
+</html>
