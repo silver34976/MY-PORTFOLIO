@@ -1,180 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shaikh Premium Portfolio</title>
-  <style>
-    /* Reset & base */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #fafafa;
-      color: #222;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    a {
-      color: #0066ff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shaikh Premium Gallery</title>
+<style>
+  /* Basic reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #111;
+    color: #eee;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    background: linear-gradient(90deg, #ff6e7f, #bfe9ff);
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(255,110,127,0.4);
+  }
+  header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: #fff;
+    margin-bottom: 0.3rem;
+  }
+  header p {
+    font-weight: 400;
+    font-size: 1.2rem;
+    opacity: 0.8;
+  }
+  main.container {
+    max-width: 1400px;
+    margin: 2rem auto 4rem auto;
+    padding: 0 1rem;
+    flex-grow: 1;
+  }
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .gallery-item {
+    background: #222;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+      0 6px 15px rgba(255, 110, 127, 0.3),
+      inset 0 0 10px rgba(255, 110, 127, 0.2);
+    cursor: pointer;
+    transition:
+      transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .gallery-item:hover {
+    transform: scale(1.07);
+    box-shadow:
+      0 14px 40px rgba(255, 110, 127, 0.7),
+      inset 0 0 30px rgba(255, 110, 127, 0.4);
+    z-index: 10;
+  }
+  .gallery-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    user-select: none;
+  }
 
-    /* Header */
-    header {
-      background: linear-gradient(90deg, #007CF0, #00DFD8);
-      color: white;
-      padding: 30px 20px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-    header h1 {
-      font-size: 2.8rem;
-      letter-spacing: 2px;
-      margin-bottom: 8px;
-      font-weight: 700;
-    }
-    header p {
-      font-size: 1.1rem;
-      font-weight: 400;
-      letter-spacing: 1px;
-      opacity: 0.9;
-    }
+  /* We'll set dynamic widths/heights in JS for aspect ratio */
 
-    /* Main container */
-    main.container {
-      max-width: 1400px;
-      margin: 40px auto;
-      padding: 0 20px;
-      flex-grow: 1;
-    }
+  footer {
+    text-align: center;
+    padding: 1rem 1rem;
+    font-size: 0.9rem;
+    background: #111;
+    color: #777;
+    user-select: none;
+  }
 
-    /* Gallery grid */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      grid-gap: 25px;
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .gallery-item {
+      width: 45vw !important;
+      height: auto !important;
     }
-    .gallery img {
-      width: 100%;
-      height: 380px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 12px 20px rgba(0,0,0,0.12);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-      cursor: pointer;
-      background-color: #ddd;
-      user-select: none;
+  }
+  @media (max-width: 600px) {
+    .gallery-item {
+      width: 90vw !important;
+      height: auto !important;
     }
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-      z-index: 2;
-      position: relative;
-    }
-
-    /* Footer */
-    footer {
-      background: #111;
-      color: #eee;
-      text-align: center;
-      padding: 20px 10px;
-      font-size: 0.9rem;
-      letter-spacing: 1.2px;
-      user-select: none;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.2rem;
-      }
-      .gallery img {
-        height: 300px;
-      }
-    }
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
-      .gallery img {
-        height: 240px;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>Shaikh Premium Portfolio</h1>
-    <p>Creative Advertisements & Photography Showcase</p>
-  </header>
+<header>
+  <h1>Shaikh Premium Gallery</h1>
+  <p>Dynamic Gallery with Aspect Ratio & GIF Support</p>
+</header>
 
-  <main class="container">
-    <div class="gallery" id="gallery"></div>
-  </main>
+<main class="container">
+  <div class="gallery" id="gallery"></div>
+</main>
 
-  <footer>
-    <p>&copy; 2025 Shaikh Portfolio. All rights reserved.</p>
-  </footer>
+<footer>
+  &copy; 2025 Shaikh Portfolio. All rights reserved.
+</footer>
 
-  <script>
-    const photos = [
-      "AIMAGAZINE.jpg",
-      "APPLE_WATCH_SOCIALMIDEA-AD-1080X1080.jpg",
-      "Album-7.jpg",
-      "a-photograph-in-a-food-magazine-style-sh_eVCn1XA8ToGbD5UxOmaxyQ_Smm4aTSsR32NvlJy5Xad4g.jpg",
-      "AD_hp_laptop.jpg",
-      "iphone xr firecracker work_final.jpg",
-      "iphone_ad_practice_lut_image.jpg",
-      "iphone13_ad.jpg",
-      "Lay's ad gif.gif",
-      "Lay's ad gif_2.gif",
-      "magazine business.jpg",
-      "news paper ad _phone pay gujarati.jpg",
-      "NEWS PAPER AD-1.jpg",
-      "NEWSPAPER-AD.jpg",
-      "PHONEPAYHINDI NEWS PAPER AD_IN_HINDI.jpg",
-      "PHONEPAY NEWS PAPER AD.jpg",
-      "WEDDING_ALBUM_4.jpg",
-      "wedding_album_6.jpg",
-      "WEDDING_ALBUME_FINAL.jpg",
-      "WOK & ROLL.jpg",
-      "extra1.jpg",
-      "extra2.jpg",
-      "extra3.jpg",
-      "extra4.jpg",
-      "extra5.jpg"
-    ];
-
-    const photosPerPage = 10;
-    let currentIndex = 0;
-    const gallery = document.getElementById('gallery');
-
-    function showPhotos() {
-      gallery.innerHTML = '';
-      for (let i = 0; i < photosPerPage; i++) {
-        const index = (currentIndex + i) % photos.length;
-        const img = document.createElement('img');
-        img.src = photos[index];
-        img.alt = `Photo ${index + 1}`;
-        gallery.appendChild(img);
-      }
-      currentIndex = (currentIndex + photosPerPage) % photos.length;
-    }
-
-    showPhotos();
-    setInterval(showPhotos, 10000); // 10 seconds
-  </script>
-
-</body>
-</html>
+<script>
+  const photos = [
+    "AIMAGAZINE.jpg",
+    "APPLE_WATCH_SOCIALMIDEA-AD-1080X1080.jpg",
+    "Album-7.jpg",
+    "a-photograph-in-a-food-magazine-style-sh_eVCn1XA8ToGbD5UxOmaxyQ_Smm4aTSsR32NvlJy5Xad4g.jpg",
+    "AD_hp_laptop.jpg",
+    "iphone xr firecracker work_final.jpg",
+    "iphone_ad_practice_lut_image.jpg",
+    "iphone13_ad.jpg",
+    "Lay's ad gif.gif",
+    "Lay's ad gif_2.gif",
+    "magazine business.jpg",
+    "news paper ad _phone pay gujarati.jpg",
+    "NEWS PAPER AD-1.jpg",
+    "NEWSPAPER-AD.jpg",
+    "PHONEPAYHINDI NEWS PAPER AD_IN_HINDI.jpg",
+    "PHONEPAY NEWS PAPER AD.jpg",
+    "WEDDING_ALBUM_
